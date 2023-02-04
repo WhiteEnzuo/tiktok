@@ -10,6 +10,11 @@ import (
 )
 
 func main() {
+	var ConfigMap map[string]interface{}
+	//获取consul的配置
+	consul.GetConsulConfig("Test", &ConfigMap)
+
+	fmt.Println(ConfigMap)
 	//创建gin
 	router := gin.Default()
 	//服务接口
