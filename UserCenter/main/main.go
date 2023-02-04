@@ -1,6 +1,6 @@
 package main
 
-import "Service/admin"
+import "UserCenter/admin"
 
 func main() {
 	server := admin.GetServer()

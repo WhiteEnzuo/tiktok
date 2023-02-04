@@ -6,7 +6,7 @@ require (
 	common v0.0.0-00010101000000-000000000000
 	github.com/gin-gonic/gin v1.8.2
 	go-micro.dev/v4 v4.9.0
-	rpc v0.0.0-00010101000000-000000000000
+	model v0.0.0-00010101000000-000000000000
 )
 
 require (
@@ -86,5 +86,5 @@ require (
 
 replace (
 	common => ../common
-	rpc => ../rpc
+	model => ../model
 )

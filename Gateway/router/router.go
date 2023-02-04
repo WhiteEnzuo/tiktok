@@ -2,21 +2,18 @@ package router
 
 import (
 	"Gateway/gloabl"
+	"common/Result"
 	"common/call"
 	"github.com/gin-gonic/gin"
-	"rpc/rpc/Test"
 )
 
 //路由注册
 func Register(r *gin.Engine) {
 	v1Group := r.Group("/service")
 	v1Group.Handle("GET", "/Test", func(ctx *gin.Context) {
-		req := Test.Request{
-			Name: "123",
-		}
-		var resp Test.Response
-		_ = call.Call(gloabl.GetConsul(), "service", "/v1/prod", req, &resp)
-		ctx.JSON(200, resp)
+		result := Result.NewResult()
+		res, _ := call.Call(gloabl.GetConsul(), "service", "/v1/prod", result)
+		ctx.JSON(200, res)
 	})
 
 }

@@ -1,7 +1,7 @@
 package admin
 
 import (
-	"Service/router"
+	"UserCenter/router"
 	"common/config"
 	"common/consul"
 	"github.com/gin-gonic/gin"
@@ -68,12 +68,7 @@ func init() {
 	if err != nil {
 		return
 	}
-	var ConfigMap map[string]interface{}
-	//获取consul的配置
-	err = consul.GetConsulConfig("Test", &ConfigMap)
-	if err != nil {
-		return
-	}
+
 	server := routerInit()
 	/**
 		创建服务
