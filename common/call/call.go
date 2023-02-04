@@ -2,18 +2,16 @@ package call
 
 import (
 	"bytes"
-	"common/consul"
 	"context"
 	"encoding/json"
-	"fmt"
+	"go-micro.dev/v4/registry"
 	"go-micro.dev/v4/selector"
 	"io/ioutil"
 	"net/http"
 )
 
-func Call(serviceName string, path string, request interface{}, response interface{}) error {
+func Call(c registry.Registry, serviceName string, path string, request interface{}, response interface{}) error {
 
-	c := consul.GetConsul()
 	service, _ := c.GetService(serviceName)
 	next := selector.Random(service)
 	node, _ := next()
@@ -33,12 +31,10 @@ func Call(serviceName string, path string, request interface{}, response interfa
 		return err
 	}
 	all, err := ioutil.ReadAll(resp.Body)
-	fmt.Println(string(all))
 	if err != nil {
 		return err
 	}
 	err = json.Unmarshal(all, response)
-
 	if err != nil {
 		return err
 	}

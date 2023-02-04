@@ -11,8 +11,8 @@ import (
 	"regexp"
 )
 
-func GetConsul() registry.Registry {
-	return c.NewRegistry(registry.Addrs("8.130.28.213:8500"))
+func GetConsul(url string) registry.Registry {
+	return c.NewRegistry(registry.Addrs(url))
 
 }
 
