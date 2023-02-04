@@ -1,37 +1,44 @@
 package call
 
 import (
-	"github.com/mitchellh/mapstructure"
-	"go-micro.dev/v4/selector"
-	"reflect"
-)
-
-import (
+	"bytes"
+	"common/consul"
 	"context"
+	"encoding/json"
+	"fmt"
+	"go-micro.dev/v4/selector"
+	"io/ioutil"
+	"net/http"
 )
 
-func Call(s selector.Selector, context context.Context, serviceName string, path string, request interface{}, response interface{}) error {
+func Call(serviceName string, path string, request interface{}, response interface{}) error {
 
-	return nil
-}
-
-func Struct2map(obj any) (data map[string]any, err error) {
-	// 通过反射将结构体转换成map
-	data = make(map[string]any)
-	objT := reflect.TypeOf(obj)
-	objV := reflect.ValueOf(obj)
-	for i := 0; i < objT.NumField(); i++ {
-		fileName, ok := objT.Field(i).Tag.Lookup("json")
-		if ok {
-			data[fileName] = objV.Field(i).Interface()
-		} else {
-			data[objT.Field(i).Name] = objV.Field(i).Interface()
-		}
+	c := consul.GetConsul()
+	service, _ := c.GetService(serviceName)
+	next := selector.Random(service)
+	node, _ := next()
+	marshal, err := json.Marshal(request)
+	if err != nil {
+		return err
 	}
-	return data, nil
-}
-func Map2Struct(val map[interface{}]interface{}, target *interface{}) error {
-	err := mapstructure.Decode(val, target)
+	buffer := bytes.NewBuffer(marshal)
+	req, err := http.NewRequest("POST", "http://"+node.Address+path, buffer)
+	if err != nil {
+		return err
+	}
+	req.Header.Set("Content-Type", "application/json;charset=UTF-8") //添加请求头
+	client := http.Client{}
+	resp, err := client.Do(req.WithContext(context.TODO()))
+	if err != nil {
+		return err
+	}
+	all, err := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(all))
+	if err != nil {
+		return err
+	}
+	err = json.Unmarshal(all, response)
+
 	if err != nil {
 		return err
 	}
