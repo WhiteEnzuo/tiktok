@@ -2,11 +2,24 @@ package main
 
 import (
 	"common/call"
+	"common/config"
 	"fmt"
 	"rpc/rpc/Test"
 )
 
+type ServerConfig struct {
+	Host string
+	Port string
+}
+
 func main() {
+	//读配置
+	var s ServerConfig
+	err1 := config.ReadConfig("server", &s)
+	if err1 != nil {
+		return
+	}
+	//fmt.Println(s.Port)
 	//Response
 	t := new(Test.Response)
 	var t1 Test.Request
