@@ -2,8 +2,13 @@ package main
 
 import (
 	"Service/admin"
+	"common/RabbitMq"
+	"common/Redis"
 	"common/Result"
+	"common/mysql"
+	"common/token"
 	"fmt"
+	"github.com/streadway/amqp"
 )
 
 func main() {
@@ -15,12 +20,52 @@ func main() {
 		fmt.Println(result.ToJsonString())
 	}
 
-	if true {
+	if false {
 		server := admin.GetServer()
 		err := server.Run()
 		if err != nil {
 			return
 		}
+	}
+	if false {
+		//gorm
+		m := mysql.NewMysql("root", "root", "localhost", "3306", "java")
+		server := m.Server
+		server.Name()
+	}
+	if false {
+		//Redis
+		redis := Redis.NewRedis("127.0.0.1", "6379")
+		server := redis.Server
+		server.Do("set", "1", "1")
+	}
+	if false {
+		//RabbitMq
+		mq := RabbitMq.NewRabbitMq("admin", "admin", "8.130.28.213", "5672")
+		server := mq.Server
+		channel, _ := server.Channel()
+		q, _ := channel.QueueDeclare(
+			"hello",
+			false,
+			false,
+			false,
+			false,
+			nil,
+		)
+		channel.Publish(
+			"",
+			q.Name,
+			false,
+			false,
+			amqp.Publishing{
+				ContentType: "text/plain",
+				Body:        []byte("Test"),
+			})
+	}
+	if false {
+		genToken, _ := token.GenToken(123, "456")
+		parseToken, _ := token.ParseToken(genToken)
+		fmt.Println(parseToken)
 	}
 
 }

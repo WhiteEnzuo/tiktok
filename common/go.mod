@@ -3,9 +3,14 @@ module common
 go 1.18
 
 require (
+	github.com/garyburd/redigo v1.6.4
 	github.com/go-micro/plugins/v4/registry/consul v1.2.0
 	github.com/liuhongdi/digv04 v0.0.0-20201123084137-d1347172dac3
+	github.com/streadway/amqp v1.0.0
 	go-micro.dev/v4 v4.9.0
+	gorm.io/driver/mysql v1.4.5
+	gorm.io/gorm v1.24.5
+
 )
 
 require (
@@ -21,6 +26,7 @@ require (
 	github.com/go-git/gcfg v1.5.0 // indirect
 	github.com/go-git/go-billy/v5 v5.3.1 // indirect
 	github.com/go-git/go-git/v5 v5.4.2 // indirect
+	github.com/go-sql-driver/mysql v1.7.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/uuid v1.2.0 // indirect
 	github.com/hashicorp/consul/api v1.9.0 // indirect
@@ -33,6 +39,8 @@ require (
 	github.com/hashicorp/serf v0.9.5 // indirect
 	github.com/imdario/mergo v0.3.12 // indirect
 	github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 // indirect
+	github.com/jinzhu/inflection v1.0.0 // indirect
+	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/kevinburke/ssh_config v0.0.0-20201106050909-4977a11b4351 // indirect
 	github.com/magiconair/properties v1.8.4 // indirect
 	github.com/mattn/go-colorable v0.1.8 // indirect

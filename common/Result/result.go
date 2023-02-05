@@ -68,3 +68,11 @@ func (r *Result) ToJsonBytes() ([]byte, error) {
 	}
 	return marshal, nil
 }
+func JsonToResult(jsonStr string) (*Result, error) {
+	r := new(Result)
+	err := json.Unmarshal([]byte(jsonStr), r)
+	if err != nil {
+		return nil, err
+	}
+	return r, nil
+}
