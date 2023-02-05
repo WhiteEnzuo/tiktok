@@ -74,12 +74,12 @@ func init() {
 		return
 	}
 	if false {
-		var ConfigMap map[string]interface{}
+		//var ConfigMap map[string]interface{}
 		//获取consul的配置
-		err = consul.GetConsulConfig("Test", &ConfigMap)
-		if err != nil {
-			return
-		}
+		//err = consul.GetConsulConfig("Test", &ConfigMap)
+		//if err != nil {
+		//	return
+		//}
 	}
 
 	server := routerInit()

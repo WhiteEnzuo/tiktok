@@ -16,14 +16,25 @@ import (
 	"regexp"
 )
 
+type Config struct {
+	Host string
+	Port string
+}
+
 func GetConsul(url string) registry.Registry {
 	return c.NewRegistry(registry.Addrs(url))
 
 }
+func NewConfig(host, port string) *Config {
+	config := new(Config)
+	config.Host = host
+	config.Port = port
+	return config
+}
 
 // GetConsulConfig 设置配置中心
-func GetConsulConfig(path string, response *map[string]interface{}) error {
-	get, err := http.Get("http://8.130.28.213:8500/v1/kv/" + path)
+func (c Config) GetConsulConfig(path string, response *map[string]interface{}) error {
+	get, err := http.Get("http://" + c.Host + ":" + c.Port + "/v1/kv/" + path)
 	if err != nil {
 		return err
 	}

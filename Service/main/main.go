@@ -10,6 +10,7 @@ import (
 	"common/RabbitMq"
 	"common/Redis"
 	"common/Result"
+	"common/consul"
 	"common/mysql"
 	"common/token"
 	"fmt"
@@ -17,6 +18,17 @@ import (
 )
 
 func main() {
+	if false {
+		//配置中心
+		config := consul.NewConfig("8.130.28.213", "8500")
+		var test map[string]interface{}
+		err := config.GetConsulConfig("Test", &test)
+		if err != nil {
+			return
+		}
+		fmt.Println(test)
+	}
+
 	if false {
 		//Result用来传输
 		result := Result.NewResult()
