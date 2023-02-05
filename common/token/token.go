@@ -1,5 +1,10 @@
 package token
 
+/**
+ * @Description
+ * @Author enzuo
+ * @Date 2023/2/5
+ **/
 import (
 	"errors"
 	"github.com/dgrijalva/jwt-go"

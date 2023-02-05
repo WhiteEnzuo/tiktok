@@ -1,5 +1,10 @@
 package mysql
 
+/**
+ * @Description
+ * @Author enzuo
+ * @Date 2023/2/5
+ **/
 import (
 	"go-micro.dev/v4/util/log"
 	my "gorm.io/driver/mysql" // gorm mysql 驱动包

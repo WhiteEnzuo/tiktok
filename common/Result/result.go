@@ -1,5 +1,10 @@
 package Result
 
+/**
+ * @Description
+ * @Author enzuo
+ * @Date 2023/2/5
+ **/
 import (
 	"encoding/json"
 )

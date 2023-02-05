@@ -1,5 +1,10 @@
 package RabbitMq
 
+/**
+ * @Description
+ * @Author enzuo
+ * @Date 2023/2/5
+ **/
 import (
 	"github.com/streadway/amqp"
 	"go-micro.dev/v4/util/log"

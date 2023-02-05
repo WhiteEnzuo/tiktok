@@ -1,5 +1,10 @@
 package selector
 
+/**
+ * @Description
+ * @Author enzuo
+ * @Date 2023/2/5
+ **/
 import (
 	"go-micro.dev/v4/registry"
 	"go-micro.dev/v4/selector"
