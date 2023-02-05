@@ -35,9 +35,9 @@ func main() {
 	}
 	if false {
 		//Redis
-		redis := Redis.NewRedis("127.0.0.1", "6379")
-		server := redis.Server
-		server.Do("set", "1", "1")
+		redis := Redis.NewRedis("127.0.0.1", "6379", "1")
+		fmt.Println(redis.Keys("*"))
+
 	}
 	if false {
 		//RabbitMq
