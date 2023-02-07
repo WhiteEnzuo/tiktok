@@ -6,7 +6,7 @@ package main
  * @Date 2023/2/5
  **/
 import (
-	"Service/admin"
+	"VedioService/admin"
 	"common/RabbitMq"
 	"common/Redis"
 	"common/Result"
