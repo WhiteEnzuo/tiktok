@@ -6,16 +6,21 @@ package router
  * @Date 2023/2/5
  **/
 import (
-	"common/Result"
+	"UserCenter/controller"
+	"UserCenter/logic"
 	"github.com/gin-gonic/gin"
 )
 
 func Register(r *gin.Engine) {
 	//注册接口
-	v1Group := r.Group("/v1")
-	v1Group.Handle("POST", "/prod", func(context *gin.Context) {
-		ok := Result.NewResult().OK()
-		context.JSON(200, ok)
-	})
+	v1Group := r.Group("/douyin")
+	v1Group.Handle("POST", "/user/register", controller.SHAMiddleWare(), logic.UserRegisterLogic)
+
+}
+
+func Login(r *gin.Engine) {
+	//登录接口
+	v1Group := r.Group("/douyin")
+	v1Group.Handle("POST", "/user/login", controller.SHAMiddleWare(), logic.UserLoginLogic)
 
 }
