@@ -18,7 +18,7 @@ import (
 )
 
 func main() {
-	if false {
+	if true {
 		//配置中心
 		config := consul.NewConfig("8.130.28.213", "8500")
 		var test map[string]interface{}
@@ -32,7 +32,6 @@ func main() {
 	if false {
 		//Result用来传输
 		result := Result.NewResult()
-
 		result.OK().SetCode(201).SetDataKey("test", 123)
 		fmt.Println(result.ToJsonString())
 	}

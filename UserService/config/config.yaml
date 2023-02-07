@@ -1,7 +1,7 @@
 server:
   host: 127.0.0.1
   port: 8902
-  serviceName: service
+  serviceName: Userservice
 consul:
   host: 8.130.28.213
   port: 8500

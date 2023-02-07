@@ -6,7 +6,7 @@ package admin
  * @Date 2023/2/5
  **/
 import (
-	"Service/router"
+	"UserService/router"
 	"common/config"
 	"common/consul"
 	"github.com/gin-gonic/gin"

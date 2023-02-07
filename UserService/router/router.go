@@ -16,7 +16,7 @@ func Register(r *gin.Engine) {
 	v1Group.Handle("POST", "/prod", func(context *gin.Context) {
 		result := Result.NewResult()
 
-		context.JSON(200, result.OK().SetMessage("123"))
+		context.JSON(200, result.OK().SetMessage("123").SetDataKey("test", "Test"))
 	})
 
 }
