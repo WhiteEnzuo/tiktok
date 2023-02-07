@@ -6,6 +6,7 @@ package admin
  * @Date 2023/2/5
  **/
 import (
+	"UserCenter/models"
 	"UserCenter/router"
 	"common/config"
 	"common/consul"
@@ -56,11 +57,14 @@ func serverConfigInit() (serverConfig, error) {
 	}
 	return conf, nil
 }
+
 func routerInit() *gin.Engine {
 	//创建gin
 	server := gin.Default()
 	//服务接口注册
 	router.Register(server)
+	//登录接口注册
+	router.Login(server)
 	return server
 }
 func init() {
@@ -73,7 +77,8 @@ func init() {
 	if err != nil {
 		return
 	}
-
+	// 数据库初始化
+	models.InitDB()
 	server := routerInit()
 	/**
 		创建服务
