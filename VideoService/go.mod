@@ -1,4 +1,4 @@
-module VedioService
+module VideoService
 
 go 1.18
 

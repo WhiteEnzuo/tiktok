@@ -6,7 +6,8 @@ package main
  * @Date 2023/2/5
  **/
 import (
-	"VedioService/admin"
+	"VideoService/admin"
+	"VideoService/model"
 	"common/RabbitMq"
 	"common/Redis"
 	"common/Result"
@@ -19,12 +20,23 @@ import (
 
 func main() {
 	if true {
+		f := model.File{
+			Url: "/123",
+			//Md5: "456",
+		}
+		err := f.QueryByUrl()
+		fmt.Println(f)
+		if err != nil {
+			fmt.Println(err)
+		}
+	}
+	if false {
 		//配置中心
 		config := consul.NewConfig("8.130.28.213", "8500")
 		var test map[string]interface{}
-		err := config.GetConsulConfig("Test", &test)
+		err := config.GetConsulConfig("Video/mysql", &test)
 		if err != nil {
-			return
+			fmt.Println(err)
 		}
 		fmt.Println(test)
 	}
