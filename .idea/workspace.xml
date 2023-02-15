@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b31ff907-0fcd-4857-9c29-e87d62bba57b" name="Changes" comment="点赞">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/service/initMQ.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/service/initMQ.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserService/service/likeServiceImpl.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/service/likeServiceImpl.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +57,7 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="Go Test.TestLikeAction in UserService/service">
+  <component name="RunManager" selected="Go Test.TestLikeAction in UserService/service (1)">
     <configuration name="TestGetLikeList in UserService/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="Tiktok" />
       <working_directory value="$PROJECT_DIR$/UserService/service" />
@@ -67,6 +68,18 @@
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
       <pattern value="^\QTestGetLikeList\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestLikeAction in UserService/service (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="Tiktok" />
+      <working_directory value="$PROJECT_DIR$/UserService/service" />
+      <root_directory value="$PROJECT_DIR$/UserService" />
+      <kind value="PACKAGE" />
+      <package value="UserService/service" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestLikeAction\E$" />
       <method v="2" />
     </configuration>
     <configuration name="TestLikeAction in UserService/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -93,18 +106,6 @@
       <pattern value="^\QTestLikeListCount\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestMQ in UserService/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="Tiktok" />
-      <working_directory value="$PROJECT_DIR$/UserService/service" />
-      <root_directory value="$PROJECT_DIR$/UserService" />
-      <kind value="PACKAGE" />
-      <package value="UserService/service" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <pattern value="^\QTestMQ\E$" />
-      <method v="2" />
-    </configuration>
     <configuration name="TestVideoLikeCount in UserService/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="Tiktok" />
       <working_directory value="$PROJECT_DIR$/UserService/service" />
@@ -118,19 +119,19 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Go Test.TestLikeAction in UserService/service (1)" />
       <item itemvalue="Go Test.TestGetLikeList in UserService/service" />
       <item itemvalue="Go Test.TestLikeListCount in UserService/service" />
       <item itemvalue="Go Test.TestVideoLikeCount in UserService/service" />
       <item itemvalue="Go Test.TestLikeAction in UserService/service" />
-      <item itemvalue="Go Test.TestMQ in UserService/service" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestLikeAction in UserService/service (1)" />
         <item itemvalue="Go Test.TestLikeAction in UserService/service" />
-        <item itemvalue="Go Test.TestVideoLikeCount in UserService/service" />
         <item itemvalue="Go Test.TestGetLikeList in UserService/service" />
+        <item itemvalue="Go Test.TestVideoLikeCount in UserService/service" />
         <item itemvalue="Go Test.TestLikeListCount in UserService/service" />
-        <item itemvalue="Go Test.TestMQ in UserService/service" />
       </list>
     </recent_temporary>
   </component>
@@ -157,6 +158,20 @@
     <settings-migrated>true</settings-migrated>
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/UserService/service/likeServiceImpl.go</url>
+          <line>255</line>
+          <option name="timeStamp" value="207" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/UserService/service/likeServiceImpl.go</url>
+          <line>171</line>
+          <option name="timeStamp" value="230" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="GoTestRunConfiguration">
         <watch expression="Host" />

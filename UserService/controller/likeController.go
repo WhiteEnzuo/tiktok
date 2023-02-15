@@ -13,7 +13,7 @@ type likeResponse struct {
 	StatusMsg  string `json:"status_msg,omitempty"`
 }
 
-// LikeAction 点赞或者取消赞操作 (还没调好)
+// LikeAction 点赞或者取消赞操作
 func LikeAction() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		strUserId := c.GetString("userId") // token 鉴权中获取？？

@@ -36,23 +36,24 @@ func NewLikeRabbitMQ(queueName string) *LikeMQ {
 func (l *LikeMQ) Publish(message string) {
 
 	_, err := l.channel.QueueDeclare(
+		// 队列名字
 		l.queueName,
-		//是否持久化
+		// 是否持久化
 		false,
-		//是否为自动删除
+		// 是否自动删除
 		false,
-		//是否具有排他性
+		// 是否独占队列
 		false,
-		//是否阻塞
+		// 是否阻塞
 		false,
-		//额外属性
+		// 其他参数
 		nil,
 	)
 	if err != nil {
 		panic(err)
 	}
 
-	err1 := l.channel.Publish(
+	err = l.channel.Publish(
 		l.exchange,
 		l.queueName,
 		false,
@@ -61,7 +62,7 @@ func (l *LikeMQ) Publish(message string) {
 			ContentType: "text/plain",
 			Body:        []byte(message),
 		})
-	if err1 != nil {
+	if err != nil {
 		panic(err)
 	}
 
@@ -78,15 +79,15 @@ func (l *LikeMQ) Consumer() {
 
 	messages, err1 := l.channel.Consume(
 		l.queueName,
-		//用来区分多个消费者
+		// 用来区分多个消费者
 		"",
-		//是否自动应答
+		// 是否自动应答
 		true,
-		//是否具有排他性
+		// 是否具有排他性
 		false,
-		//如果设置为true，表示不能将同一个connection中发送的消息传递给这个connection中的消费者
+		// 如果设置为true，表示不能将同一个connection中发送的消息传递给这个connection中的消费者
 		false,
-		//消息队列是否阻塞
+		// 消息队列是否阻塞
 		false,
 		nil,
 	)
@@ -94,77 +95,73 @@ func (l *LikeMQ) Consumer() {
 		panic(err1)
 	}
 
+	// 防止主进程过早结束子进程还没有运行完
 	forever := make(chan bool)
+	// 一直监听生产者
 	switch l.queueName {
 	case "likeAdd":
-		// 点赞消费队列
-		go l.consumerLikeAdd(messages)
+		go func() {
+			// 点赞消费队列
+			println(l.queueName)
+			for d := range messages {
+				// 参数解析
+				params := strings.Split(fmt.Sprintf("%s", d.Body), " ")
+				uid, _ := strconv.ParseInt(params[0], 10, 64)
+				vid, _ := strconv.ParseInt(params[1], 10, 64)
+				// 尝试操作数据库的次数
+				for i := 0; i < 3; i++ {
+					flag := false
+					like, err2 := dao.GetLike(int(uid), int(vid))
+					if err2 != nil {
+						flag = true
+					} else {
+						if like == 0 {
+							if err2 = dao.InsertLike(int(uid), int(vid)); err2 != nil {
+								flag = true
+							}
+						} else if like == 2 {
+							if err2 = dao.UpdateLike(int(uid), int(vid), 1); err2 != nil {
+								flag = true
+							}
+						}
+						// 若没出错就结束
+						if flag == false {
+							break
+						}
+					}
+				}
+			}
+		}()
 	case "likeDel":
-		// 取消赞消费队列
-		go l.consumerLikeDel(messages)
-
+		go func() {
+			// 取消赞消费队列
+			println(l.queueName)
+			for d := range messages {
+				params := strings.Split(fmt.Sprintf("%s", d.Body), " ")
+				uid, _ := strconv.ParseInt(params[0], 10, 64)
+				vid, _ := strconv.ParseInt(params[1], 10, 64)
+				for i := 0; i < 3; i++ {
+					flag := false
+					like, err2 := dao.GetLike(int(uid), int(vid))
+					if err2 != nil {
+						flag = true
+					} else {
+						if like == 0 {
+							flag = true
+						} else if like == 1 {
+							if err2 = dao.UpdateLike(int(uid), int(vid), 0); err2 != nil {
+								flag = true
+							}
+						}
+					}
+					if flag == false {
+						break
+					}
+				}
+			}
+		}()
 	}
-
 	<-forever
-}
-
-// consumerLikeAdd 添加赞的消费方式
-func (l *LikeMQ) consumerLikeAdd(messages <-chan amqp.Delivery) {
-	for d := range messages {
-		// 参数解析
-		params := strings.Split(fmt.Sprintf("%s", d.Body), " ")
-		uid, _ := strconv.ParseInt(params[0], 10, 64)
-		vid, _ := strconv.ParseInt(params[1], 10, 64)
-		// 尝试操作数据库的次数
-		for i := 0; i < 3; i++ {
-			flag := false
-			like, err := dao.GetLike(int(uid), int(vid))
-			if err != nil {
-				flag = true
-			} else {
-				if like == 0 {
-					if err = dao.InsertLike(int(uid), int(vid)); err != nil {
-						flag = true
-					}
-				} else if like == 2 {
-					if err = dao.UpdateLike(int(uid), int(vid), 1); err != nil {
-						flag = true
-					}
-				}
-				// 若没出错就结束
-				if flag == false {
-					break
-				}
-			}
-		}
-	}
-}
-
-// consumerLikeDel 取消赞的消费方式
-func (l *LikeMQ) consumerLikeDel(messages <-chan amqp.Delivery) {
-	for d := range messages {
-		params := strings.Split(fmt.Sprintf("%s", d.Body), " ")
-		uid, _ := strconv.ParseInt(params[0], 10, 64)
-		vid, _ := strconv.ParseInt(params[1], 10, 64)
-		for i := 0; i < 3; i++ {
-			flag := false
-			like, err := dao.GetLike(int(uid), int(vid))
-			if err != nil {
-				flag = true
-			} else {
-				if like == 0 {
-					flag = true
-				} else if like == 1 {
-					if err = dao.UpdateLike(int(uid), int(vid), 0); err != nil {
-						flag = true
-					}
-				}
-			}
-			if flag == false {
-				break
-			}
-		}
-	}
 }
 
 var RmqLikeAdd *LikeMQ

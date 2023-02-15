@@ -163,7 +163,7 @@ func (like *LikeServiceImpl) LikeAction(uid int, vid int, act int) error {
 		}
 		if isExistUID == true {
 			// strUID 中添加当前 vid
-			_, err = RdLikeUID.Server.Do("SAdd", strUID, vid)
+			_, err = RdLikeUID.Server.Do("SAdd", strUID, strVID)
 			if err != nil {
 				log.Println(err.Error())
 				return errors.New("添加 vid 失败")
@@ -182,7 +182,7 @@ func (like *LikeServiceImpl) LikeAction(uid int, vid int, act int) error {
 			if err != nil {
 				return errors.New("维护 RdLikeUID 失败")
 			}
-			_, err = RdLikeUID.Server.Do("SAdd", strUID, vid)
+			_, err = RdLikeUID.Server.Do("SAdd", strUID, strVID)
 			if err != nil {
 				log.Println(err.Error())
 				return errors.New("添加点赞当前视频失败")
@@ -197,7 +197,7 @@ func (like *LikeServiceImpl) LikeAction(uid int, vid int, act int) error {
 			return errors.New("查询是否存在 strVID 失败")
 		}
 		if isExistVID == true {
-			_, err = RdLikeVID.Server.Do("SAdd", strVID, uid)
+			_, err = RdLikeVID.Server.Do("SAdd", strVID, strUID)
 			if err != nil {
 				log.Println(err.Error())
 				return errors.New("添加 uid 失败")
@@ -213,7 +213,7 @@ func (like *LikeServiceImpl) LikeAction(uid int, vid int, act int) error {
 			if err != nil {
 				return errors.New("维护 RdLikeVID 失败")
 			}
-			_, err = RdLikeVID.Server.Do("SAdd", strVID, uid)
+			_, err = RdLikeVID.Server.Do("SAdd", strVID, strUID)
 			if err != nil {
 				log.Println(err.Error())
 				return errors.New("添加 uid 失败")
@@ -229,7 +229,7 @@ func (like *LikeServiceImpl) LikeAction(uid int, vid int, act int) error {
 		}
 		if isExistUID == true {
 			// strUID 中删除当前 vid
-			_, err = RdLikeUID.Server.Do("SRem", strUID, vid)
+			_, err = RdLikeUID.Server.Do("SRem", strUID, strVID)
 			if err != nil {
 				log.Println(err.Error())
 				return errors.New("删除 vid 失败")
@@ -263,7 +263,7 @@ func (like *LikeServiceImpl) LikeAction(uid int, vid int, act int) error {
 			return errors.New("查询是否存在 strVID 失败")
 		}
 		if isExistVID == true {
-			_, err = RdLikeVID.Server.Do("SRem", strVID, uid)
+			_, err = RdLikeVID.Server.Do("SRem", strVID, strUID)
 			if err != nil {
 				log.Println(err.Error())
 				return errors.New("删除 uid 失败")
@@ -279,7 +279,7 @@ func (like *LikeServiceImpl) LikeAction(uid int, vid int, act int) error {
 			if err != nil {
 				return errors.New("维护 RdLikeVID 失败")
 			}
-			_, err = RdLikeVID.Server.Do("SRem", strVID, uid)
+			_, err = RdLikeVID.Server.Do("SRem", strVID, strUID)
 			if err != nil {
 				log.Println(err.Error())
 				return errors.New("删除 uid 失败")
