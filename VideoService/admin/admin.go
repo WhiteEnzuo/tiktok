@@ -6,7 +6,7 @@ package admin
  * @Date 2023/2/5
  **/
 import (
-	"VedioService/router"
+	"VideoService/router"
 	"common/config"
 	"common/consul"
 	"github.com/gin-gonic/gin"
