@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b31ff907-0fcd-4857-9c29-e87d62bba57b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/16e5a58e-2ee1-454f-b58f-06b348d9796f.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/16e5a58e-2ee1-454f-b58f-06b348d9796f/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/16e5a58e-2ee1-454f-b58f-06b348d9796f/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/16e5a58e-2ee1-454f-b58f-06b348d9796f/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/16e5a58e-2ee1-454f-b58f-06b348d9796f/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_2_8_10_05_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_2_8_10_05__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/dao/initDB.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/dao/likeDao.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/dao/likeDao_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/service/initMQ.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/service/initRD.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/service/likeService.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/service/likeServiceImpl.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/service/likeServiceImpl_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/sql/likes.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gateway/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/Gateway/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/admin/admin.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/admin/admin.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/config/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/config/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/main/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/main/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VedioService/admin/admin.go" beforeDir="false" afterPath="$PROJECT_DIR$/VideoService/admin/admin.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VedioService/config/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/VideoService/config/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VedioService/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/VideoService/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VedioService/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/VideoService/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VedioService/main/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/VideoService/main/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VedioService/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/VideoService/router/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/RabbitMq/RabbitMq.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/RabbitMq/RabbitMq.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/Redis/Redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/Redis/Redis.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" url="file://D:/GO/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2LJpUyCUaxMuaFaEh92NPXQEGtR" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.format.on.save.advertiser.fired&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mechrevo&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RunManager" selected="Go Test.TestLikeAction in UserService/service">
+    <configuration name="TestGetLike in UserService/dao" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="Tiktok" />
+      <working_directory value="$PROJECT_DIR$/UserService/dao" />
+      <root_directory value="$PROJECT_DIR$/UserService" />
+      <kind value="PACKAGE" />
+      <package value="UserService/dao" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestGetLike\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestIsLike in UserService/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="Tiktok" />
+      <working_directory value="$PROJECT_DIR$/UserService/service" />
+      <root_directory value="$PROJECT_DIR$/UserService" />
+      <kind value="PACKAGE" />
+      <package value="UserService/service" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestIsLike\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestLikeAction in UserService/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="Tiktok" />
+      <working_directory value="$PROJECT_DIR$/UserService/service" />
+      <root_directory value="$PROJECT_DIR$/UserService" />
+      <kind value="PACKAGE" />
+      <package value="UserService/service" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestLikeAction\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestMQ in UserService/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="Tiktok" />
+      <working_directory value="$PROJECT_DIR$/UserService/service" />
+      <root_directory value="$PROJECT_DIR$/UserService" />
+      <kind value="PACKAGE" />
+      <package value="UserService/service" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestMQ\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestRedis in UserService/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="Tiktok" />
+      <working_directory value="$PROJECT_DIR$/UserService/service" />
+      <root_directory value="$PROJECT_DIR$/UserService" />
+      <kind value="PACKAGE" />
+      <package value="UserService/service" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestRedis\E$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.TestLikeAction in UserService/service" />
+        <item itemvalue="Go Test.TestGetLike in UserService/dao" />
+        <item itemvalue="Go Test.TestRedis in UserService/service" />
+        <item itemvalue="Go Test.TestMQ in UserService/service" />
+        <item itemvalue="Go Test.TestIsLike in UserService/service" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/UserService/service/initMQ.go</url>
+          <line>120</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/UserService/service/initMQ.go</url>
+          <line>124</line>
+          <option name="timeStamp" value="105" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/UserService/service/initMQ.go</url>
+          <line>128</line>
+          <option name="timeStamp" value="106" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="GoTestRunConfiguration">
+        <watch expression="Host" />
+        <watch expression="err" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>

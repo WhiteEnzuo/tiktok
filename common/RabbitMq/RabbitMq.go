@@ -19,7 +19,7 @@ type RabbitMq struct {
 }
 
 func (r *RabbitMq) getConnect() error {
-	url := "amqp://" + r.Username + ":" + r.Password + "@" + r.Host + ":" + r.Port + "/"
+	url := "amqp://" + r.Username + ":" + r.Password + "@" + r.Host + ":" + r.Port + "/my_vhost"
 	conn, err := amqp.Dial(url)
 	if err != nil {
 		return err
@@ -27,6 +27,7 @@ func (r *RabbitMq) getConnect() error {
 	r.Server = conn
 	return nil
 }
+
 func NewRabbitMq(username, password, host, port string) *RabbitMq {
 	r := new(RabbitMq)
 	r.Username = username

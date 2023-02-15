@@ -6,6 +6,7 @@ package admin
  * @Date 2023/2/5
  **/
 import (
+	"UserService/dao"
 	"UserService/router"
 	"common/config"
 	"common/consul"
@@ -49,10 +50,10 @@ func serverConfigInit() (serverConfig, error) {
 		conf.Host = "127.0.0.1"
 	}
 	if conf.Port == "" {
-		conf.Port = "8902"
+		conf.Port = "8904"
 	}
 	if conf.ServiceName == "" {
-		conf.ServiceName = "service"
+		conf.ServiceName = "UserService"
 	}
 	return conf, nil
 }
@@ -81,7 +82,8 @@ func init() {
 		//	return
 		//}
 	}
-
+	// 数据库初始化
+	dao.InitDB()
 	server := routerInit()
 	/**
 		创建服务

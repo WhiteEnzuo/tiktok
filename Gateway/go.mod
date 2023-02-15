@@ -10,7 +10,6 @@ require (
 require (
 	github.com/gin-gonic/gin v1.6.3
 	go-micro.dev/v4 v4.9.0
-	model v0.0.0-00010101000000-000000000000
 )
 
 require (
