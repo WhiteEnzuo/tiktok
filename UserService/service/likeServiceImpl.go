@@ -94,29 +94,22 @@ func (like *LikeServiceImpl) VideoLikeCount(vid int) (int, error) {
 		log.Println(err.Error())
 		return 0, errors.New("查询是否存在 strVID 失败")
 	}
-	if isExistVID == true {
-		// 获取集合中 uid 个数
-		count, err1 := redis.Int(RdLikeVID.Server.Do("SCard", strVID))
-		if err1 != nil {
-			log.Println(err.Error())
-			return 0, errors.New("获取集合中 uid 个数失败")
+	if isExistVID != true {
+		//_, err = RdLikeVID.Server.Do("Expire", strVID, time.Duration(OneMonth)*time.Second)
+		//if err != nil {
+		//	RdLikeVID.Server.Do("Del", strVID)
+		//	log.Println(err.Error())
+		//	return 0, errors.New("strVID 设置有效期失败")
+		//}
+		// 通过 vid 查询所有点赞 uid，并维护到 RdLikeVID 中
+		err = like.UpRdVID(vid, strVID)
+		if err != nil {
+			return 0, errors.New("维护 RdLikeVID 失败")
 		}
-		return count, nil
 	}
-	//_, err = RdLikeVID.Server.Do("Expire", strVID, time.Duration(OneMonth)*time.Second)
-	//if err != nil {
-	//	RdLikeVID.Server.Do("Del", strVID)
-	//	log.Println(err.Error())
-	//	return 0, errors.New("strVID 设置有效期失败")
-	//}
-	// 通过 vid 查询所有点赞 uid，并维护到 RdLikeVID 中
-	err = like.UpRdVID(vid, strVID)
-	if err != nil {
-		return 0, errors.New("维护 RdLikeVID 失败")
-	}
-	// 再通过 set 集合中 uid 个数，获取点赞数量
-	count, err2 := redis.Int(RdLikeVID.Server.Do("SCard", strVID))
-	if err2 != nil {
+	// 通过 set 集合中 uid 个数，获取点赞数量
+	count, err1 := redis.Int(RdLikeVID.Server.Do("SCard", strVID))
+	if err1 != nil {
 		log.Println(err.Error())
 		return 0, errors.New("获取集合中 uid 个数失败")
 	}
@@ -131,27 +124,20 @@ func (like *LikeServiceImpl) LikeListCount(uid int) (int, error) {
 		log.Println(err.Error())
 		return 0, errors.New("查询是否存在 strUID 失败")
 	}
-	if isExistUID == true {
-		// 获取集合中 vid 个数
-		count, err1 := redis.Int(RdLikeUID.Server.Do("SCard", strUID))
-		if err1 != nil {
-			log.Println(err.Error())
-			return 0, errors.New("获取集合中 vid 个数失败")
+	if isExistUID != true {
+		//_, err = RdLikeUID.Server.Do("Expire", strUID, time.Duration(OneMonth)*time.Second)
+		//if err != nil {
+		//	RdLikeUID.Server.Do("Del", strUID)
+		//	log.Println(err.Error())
+		//	return 0, errors.New("strUID 设置有效期失败")
+		//}
+		err = like.UpRdUID(uid, strUID)
+		if err != nil {
+			return 0, errors.New("维护 RdLikeUID 失败")
 		}
-		return count, nil
 	}
-	//_, err = RdLikeUID.Server.Do("Expire", strUID, time.Duration(OneMonth)*time.Second)
-	//if err != nil {
-	//	RdLikeUID.Server.Do("Del", strUID)
-	//	log.Println(err.Error())
-	//	return 0, errors.New("strUID 设置有效期失败")
-	//}
-	err = like.UpRdUID(uid, strUID)
-	if err != nil {
-		return 0, errors.New("维护 RdLikeUID 失败")
-	}
-	count, err2 := redis.Int(RdLikeUID.Server.Do("SCard", strUID))
-	if err2 != nil {
+	count, err1 := redis.Int(RdLikeUID.Server.Do("SCard", strUID))
+	if err1 != nil {
 		log.Println(err.Error())
 		return 0, errors.New("获取集合中 vid 个数失败")
 	}
@@ -301,6 +287,35 @@ func (like *LikeServiceImpl) LikeAction(uid int, vid int, act int) error {
 		}
 	}
 	return nil
+}
+
+// GetLikeList 当前用户 uid 点赞列表
+func (like *LikeServiceImpl) GetLikeList(uid int) ([]int, error) {
+	strUID := strconv.FormatInt(int64(uid), 10)
+	isExistUID, err := redis.Bool(RdLikeUID.Server.Do("EXISTS", strUID))
+	if err != nil {
+		log.Println(err.Error())
+		return nil, errors.New("查询是否存在 strUID 失败")
+	}
+	if isExistUID != true {
+		//_, err = RdLikeUID.Server.Do("Expire", strUID, time.Duration(OneMonth)*time.Second)
+		//if err != nil {
+		//	RdLikeUID.Server.Do("Del", strUID)
+		//	log.Println(err.Error())
+		//	return 0, errors.New("strUID 设置有效期失败")
+		//}
+		err = like.UpRdUID(uid, strUID)
+		if err != nil {
+			return nil, errors.New("维护 RdLikeUID 失败")
+		}
+	}
+	// 获取集合中全部 vid
+	vidList, err1 := redis.Ints(RdLikeUID.Server.Do("SMembers", strUID))
+	if err1 != nil {
+		log.Printf(err1.Error())
+		return nil, errors.New("获取 vid 列表失败")
+	}
+	return vidList, nil
 }
 
 // UpRdUID 维护 RdLikeUID，遍历 vidList 加入

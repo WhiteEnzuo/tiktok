@@ -98,7 +98,7 @@ func (l *LikeMQ) Consumer() {
 	switch l.queueName {
 	case "likeAdd":
 		// 点赞消费队列
-		l.consumerLikeAdd(messages)
+		go l.consumerLikeAdd(messages)
 	case "likeDel":
 		// 取消赞消费队列
 		go l.consumerLikeDel(messages)
@@ -111,7 +111,7 @@ func (l *LikeMQ) Consumer() {
 // consumerLikeAdd 添加赞的消费方式
 func (l *LikeMQ) consumerLikeAdd(messages <-chan amqp.Delivery) {
 	for d := range messages {
-		// 参数解析。
+		// 参数解析
 		params := strings.Split(fmt.Sprintf("%s", d.Body), " ")
 		uid, _ := strconv.ParseInt(params[0], 10, 64)
 		vid, _ := strconv.ParseInt(params[1], 10, 64)

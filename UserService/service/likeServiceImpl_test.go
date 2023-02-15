@@ -45,6 +45,15 @@ func TestLikeAction(t *testing.T) {
 	fmt.Println(err)
 }
 
+func TestGetLikeList(t *testing.T) {
+	dao.InitDB()
+	InitRD()
+	impl := LikeServiceImpl{}
+	vidList, err := impl.GetLikeList(3)
+	fmt.Println(vidList)
+	fmt.Println(err)
+}
+
 func TestRedis(t *testing.T) {
 	InitRD()
 	_, err := RdLikeVID.Set("6", "2")
