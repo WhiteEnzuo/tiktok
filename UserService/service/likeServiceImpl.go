@@ -63,13 +63,13 @@ func (like *LikeServiceImpl) IsLike(uid int, vid int) (bool, error) {
 			}
 		}
 	}
-	//// 给 strUID 设置有效期一个月
-	//_, err = RdLikeUID.Server.Do("Expire", strUID, time.Duration(OneMonth)*time.Second)
-	//if err != nil {
-	//	RdLikeUID.Server.Do("Del", strUID)
-	//	log.Println(err.Error())
-	//	return false, errors.New("strUID 设置有效期失败")
-	//}
+	// 给 strUID 设置有效期一个月
+	_, err = RdLikeUID.Server.Do("Expire", strUID, OneMonth)
+	if err != nil {
+		RdLikeUID.Server.Do("Del", strUID)
+		log.Println(err.Error())
+		return false, errors.New("strUID 设置有效期失败")
+	}
 	/*
 		step3: RdLikeUID RdLikeVID 中都没有对应 key-value，通过 uid 查询所有点赞 vid，并维护到 RdLikeUID 中
 	*/
@@ -95,12 +95,12 @@ func (like *LikeServiceImpl) VideoLikeCount(vid int) (int, error) {
 		return 0, errors.New("查询是否存在 strVID 失败")
 	}
 	if isExistVID != true {
-		//_, err = RdLikeVID.Server.Do("Expire", strVID, time.Duration(OneMonth)*time.Second)
-		//if err != nil {
-		//	RdLikeVID.Server.Do("Del", strVID)
-		//	log.Println(err.Error())
-		//	return 0, errors.New("strVID 设置有效期失败")
-		//}
+		_, err = RdLikeVID.Server.Do("Expire", strVID, OneMonth)
+		if err != nil {
+			RdLikeVID.Server.Do("Del", strVID)
+			log.Println(err.Error())
+			return 0, errors.New("strVID 设置有效期失败")
+		}
 		// 通过 vid 查询所有点赞 uid，并维护到 RdLikeVID 中
 		err = like.UpRdVID(vid, strVID)
 		if err != nil {
@@ -125,12 +125,12 @@ func (like *LikeServiceImpl) LikeListCount(uid int) (int, error) {
 		return 0, errors.New("查询是否存在 strUID 失败")
 	}
 	if isExistUID != true {
-		//_, err = RdLikeUID.Server.Do("Expire", strUID, time.Duration(OneMonth)*time.Second)
-		//if err != nil {
-		//	RdLikeUID.Server.Do("Del", strUID)
-		//	log.Println(err.Error())
-		//	return 0, errors.New("strUID 设置有效期失败")
-		//}
+		_, err = RdLikeUID.Server.Do("Expire", strUID, OneMonth)
+		if err != nil {
+			RdLikeUID.Server.Do("Del", strUID)
+			log.Println(err.Error())
+			return 0, errors.New("strUID 设置有效期失败")
+		}
 		err = like.UpRdUID(uid, strUID)
 		if err != nil {
 			return 0, errors.New("维护 RdLikeUID 失败")
@@ -171,13 +171,13 @@ func (like *LikeServiceImpl) LikeAction(uid int, vid int, act int) error {
 			// 加入消息队列中准备对数据库操作
 			RmqLikeAdd.Publish(mss.String())
 		} else {
-			//// 给 strUID 设置有效期一个月
-			//_, err = RdLikeUID.Server.Do("Expire", strUID, time.Duration(OneMonth)*time.Second)
-			//if err != nil {
-			//	RdLikeUID.Server.Do("Del", strUID)
-			//	log.Println(err.Error())
-			//	return false, errors.New("strUID 设置有效期失败")
-			//}
+			// 给 strUID 设置有效期一个月
+			_, err = RdLikeUID.Server.Do("Expire", strUID, OneMonth)
+			if err != nil {
+				RdLikeUID.Server.Do("Del", strUID)
+				log.Println(err.Error())
+				return errors.New("strUID 设置有效期失败")
+			}
 			err = like.UpRdUID(uid, strUID)
 			if err != nil {
 				return errors.New("维护 RdLikeUID 失败")
@@ -203,12 +203,12 @@ func (like *LikeServiceImpl) LikeAction(uid int, vid int, act int) error {
 				return errors.New("添加 uid 失败")
 			}
 		} else {
-			//_, err = RdLikeVID.Server.Do("Expire", strVID, time.Duration(OneMonth)*time.Second)
-			//if err != nil {
-			//	RdLikeVID.Server.Do("Del", strVID)
-			//	log.Println(err.Error())
-			//	return 0, errors.New("strVID 设置有效期失败")
-			//}
+			_, err = RdLikeVID.Server.Do("Expire", strVID, OneMonth)
+			if err != nil {
+				RdLikeVID.Server.Do("Del", strVID)
+				log.Println(err.Error())
+				return errors.New("strVID 设置有效期失败")
+			}
 			err = like.UpRdVID(vid, strVID)
 			if err != nil {
 				return errors.New("维护 RdLikeVID 失败")
@@ -237,13 +237,13 @@ func (like *LikeServiceImpl) LikeAction(uid int, vid int, act int) error {
 			// 加入消息队列中准备对数据库操作
 			RmqLikeDel.Publish(mss.String())
 		} else {
-			//// 给 strUID 设置有效期一个月
-			//_, err = RdLikeUID.Server.Do("Expire", strUID, time.Duration(OneMonth)*time.Second)
-			//if err != nil {
-			//	RdLikeUID.Server.Do("Del", strUID)
-			//	log.Println(err.Error())
-			//	return false, errors.New("strUID 设置有效期失败")
-			//}
+			// 给 strUID 设置有效期一个月
+			_, err = RdLikeUID.Server.Do("Expire", strUID, OneMonth)
+			if err != nil {
+				RdLikeUID.Server.Do("Del", strUID)
+				log.Println(err.Error())
+				return errors.New("strUID 设置有效期失败")
+			}
 			err = like.UpRdUID(uid, strUID)
 			if err != nil {
 				return errors.New("维护 RdLikeUID 失败")
@@ -269,12 +269,12 @@ func (like *LikeServiceImpl) LikeAction(uid int, vid int, act int) error {
 				return errors.New("删除 uid 失败")
 			}
 		} else {
-			//_, err = RdLikeVID.Server.Do("Expire", strVID, time.Duration(OneMonth)*time.Second)
-			//if err != nil {
-			//	RdLikeVID.Server.Do("Del", strVID)
-			//	log.Println(err.Error())
-			//	return 0, errors.New("strVID 设置有效期失败")
-			//}
+			_, err = RdLikeVID.Server.Do("Expire", strVID, OneMonth)
+			if err != nil {
+				RdLikeVID.Server.Do("Del", strVID)
+				log.Println(err.Error())
+				return errors.New("strVID 设置有效期失败")
+			}
 			err = like.UpRdVID(vid, strVID)
 			if err != nil {
 				return errors.New("维护 RdLikeVID 失败")
@@ -298,12 +298,12 @@ func (like *LikeServiceImpl) GetLikeList(uid int) ([]int, error) {
 		return nil, errors.New("查询是否存在 strUID 失败")
 	}
 	if isExistUID != true {
-		//_, err = RdLikeUID.Server.Do("Expire", strUID, time.Duration(OneMonth)*time.Second)
-		//if err != nil {
-		//	RdLikeUID.Server.Do("Del", strUID)
-		//	log.Println(err.Error())
-		//	return 0, errors.New("strUID 设置有效期失败")
-		//}
+		_, err = RdLikeUID.Server.Do("Expire", strUID, OneMonth)
+		if err != nil {
+			RdLikeUID.Server.Do("Del", strUID)
+			log.Println(err.Error())
+			return nil, errors.New("strUID 设置有效期失败")
+		}
 		err = like.UpRdUID(uid, strUID)
 		if err != nil {
 			return nil, errors.New("维护 RdLikeUID 失败")
