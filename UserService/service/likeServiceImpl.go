@@ -144,7 +144,7 @@ func (like *LikeServiceImpl) LikeListCount(uid int) (int, error) {
 	return count, nil
 }
 
-// LikeAction 当前用户 uid 对视频 vid 的点赞操作，1-点赞，2-取消点赞 (还没调好)
+// LikeAction 当前用户 uid 对视频 vid 的点赞操作，1-点赞，2-取消点赞
 func (like *LikeServiceImpl) LikeAction(uid int, vid int, act int) error {
 	strUID := strconv.FormatInt(int64(uid), 10)
 	strVID := strconv.FormatInt(int64(vid), 10)

@@ -60,8 +60,8 @@ func serverConfigInit() (serverConfig, error) {
 func routerInit() *gin.Engine {
 	//创建gin
 	server := gin.Default()
-	//服务接口注册
-	router.Register(server)
+	//点赞接口
+	router.Like(server)
 	return server
 }
 func init() {

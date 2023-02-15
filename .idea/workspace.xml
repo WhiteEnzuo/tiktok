@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b31ff907-0fcd-4857-9c29-e87d62bba57b" name="Changes" comment="点赞">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_2_8_10_05_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_2_8_10_05__Changes_.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/controller/likeController.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/service/initMQ.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/service/initMQ.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCenter/admin/admin.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserCenter/admin/admin.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/admin/admin.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/admin/admin.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/router/router.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserService/service/likeService.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/service/likeService.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserService/service/likeServiceImpl.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/service/likeServiceImpl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/service/likeServiceImpl_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/service/likeServiceImpl_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
