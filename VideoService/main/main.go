@@ -20,6 +20,23 @@ import (
 
 func main() {
 	if true {
+		c := model.ContributeTask{
+			//UserId:123,
+			//VideoId: 123,
+			//PictureId: 456,
+			//VideoTitle: "123",
+
+		}
+		//c.ID=1
+		a, err := c.QueryRandomId(15)
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Println(a[0].PictureId)
+		//fmt.Println(arr)
+
+	}
+	if false {
 		f := model.File{
 			Url: "/123",
 			//Md5: "456",

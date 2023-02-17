@@ -13,12 +13,17 @@ import (
 
 func Register(r *gin.Engine) {
 	//注册接口
-	video := r.Group("/video")
+	video := r.Group("/tiktok")
 	video.Handle("POST", "/upload", func(c *gin.Context) {
-		//result := Result.NewResult()
-		service.Upload(r, c)
-		//c.JSON(200, result.OK().SetMessage("123").SetDataKey("url", "Test"))
+		service.UploadVideo(r, c)
 	})
-	video.StaticFS("/file", http.Dir("./upload"))
+	video.Handle("POST", "/feed", func(c *gin.Context) {
+		service.GetContributeByUserId(c)
+	})
+	video.Handle("POST", "/publish/list/", func(c *gin.Context) {
+		service.GetContributes(c)
+	})
+	video.StaticFS("/video", http.Dir("./upload/video"))
+	video.StaticFS("/picture", http.Dir("./upload/picture"))
 
 }
