@@ -6,7 +6,7 @@ package main
  * @Date 2023/2/5
  **/
 import (
-	"Service/admin"
+	"UserService/admin"
 	"common/RabbitMq"
 	"common/Redis"
 	"common/Result"
@@ -18,7 +18,7 @@ import (
 )
 
 func main() {
-	if false {
+	if true {
 		//配置中心
 		config := consul.NewConfig("8.130.28.213", "8500")
 		var test map[string]interface{}
@@ -32,7 +32,6 @@ func main() {
 	if false {
 		//Result用来传输
 		result := Result.NewResult()
-
 		result.OK().SetCode(201).SetDataKey("test", 123)
 		fmt.Println(result.ToJsonString())
 	}
@@ -46,19 +45,19 @@ func main() {
 	}
 	if false {
 		//gorm
-		m := mysql.NewMysql("root", "root", "localhost", "3306", "java")
+		m := mysql.NewMysql("root", "root", "8.130.28.213", "3306", "like")
 		server := m.Server
 		server.Name()
 	}
 	if false {
 		//Redis
-		redis := Redis.NewRedis("127.0.0.1", "6379", "1")
+		redis := Redis.NewRedis("8.130.28.213", "6379", "1")
 		fmt.Println(redis.Keys("*"))
 
 	}
 	if false {
 		//RabbitMq
-		mq := RabbitMq.NewRabbitMq("admin", "admin", "8.130.28.213", "5672")
+		mq := RabbitMq.NewRabbitMq("admin", "admin", "8.130.28.213", "15672")
 		server := mq.Server
 		channel, _ := server.Channel()
 		q, _ := channel.QueueDeclare(

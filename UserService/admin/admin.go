@@ -6,8 +6,8 @@ package admin
  * @Date 2023/2/5
  **/
 import (
-	"UserCenter/models"
-	"UserCenter/router"
+	"UserService/dao"
+	"UserService/router"
 	"common/config"
 	"common/consul"
 	"github.com/gin-gonic/gin"
@@ -50,25 +50,19 @@ func serverConfigInit() (serverConfig, error) {
 		conf.Host = "127.0.0.1"
 	}
 	if conf.Port == "" {
-		conf.Port = "8903"
+		conf.Port = "8904"
 	}
 	if conf.ServiceName == "" {
-		conf.ServiceName = "service"
+		conf.ServiceName = "UserService"
 	}
 	return conf, nil
 }
-
 func routerInit() *gin.Engine {
 	//创建gin
 	server := gin.Default()
-	//服务接口注册
-	router.Register(server)
-	//登录接口注册
-	router.Login(server)
-	//用户信息接口
-	router.UserInfo(server)
+	//点赞接口
+	router.Like(server)
 	return server
-
 }
 func init() {
 	//服务器配置
@@ -80,8 +74,16 @@ func init() {
 	if err != nil {
 		return
 	}
+	if false {
+		//var ConfigMap map[string]interface{}
+		//获取consul的配置
+		//err = consul.GetConsulConfig("Test", &ConfigMap)
+		//if err != nil {
+		//	return
+		//}
+	}
 	// 数据库初始化
-	models.InitDB()
+	dao.InitDB()
 	server := routerInit()
 	/**
 		创建服务

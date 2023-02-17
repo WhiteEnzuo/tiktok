@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="952703bc-823c-4b8a-8f50-43b2b2b13489" name="Changes" comment="用户中心">
-      <change beforePath="$PROJECT_DIR$/UserCenter/admin/admin.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserCenter/admin/admin.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserCenter/config/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/UserCenter/config/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserCenter/controller/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserCenter/controller/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserCenter/logic/user.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserCenter/logic/user_login.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserCenter/logic/user_register.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserCenter/models/init_db.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserCenter/models/user_info.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserCenter/models/user_login.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserCenter/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserCenter/router/router.go" afterDir="false" />
+    <list default="true" id="b31ff907-0fcd-4857-9c29-e87d62bba57b" name="Changes" comment="点赞">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/service/initMQ.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/service/initMQ.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/service/likeServiceImpl.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/service/likeServiceImpl.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,27 +21,14 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" url="file://$PROJECT_DIR$/../../Go" />
+  <component name="GOROOT" url="file://D:/GO/go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="326e4e92-93c1-4f61-8cab-4c2d2e247e5d" />
-        <option name="url" value="https://github.com/Qiang-Blog/tiktok.git" />
-      </UrlAndAccount>
-    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2LHVwf8SBoZfKjbmlqsiHFZZh08" />
+  <component name="ProjectId" id="2LJpUyCUaxMuaFaEh92NPXQEGtR" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
@@ -61,63 +41,97 @@
     &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.format.on.save.advertiser.fired&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Go-code/Learn&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mechrevo&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Go-code\tiktok\UserCenter\service" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Go Build.go build UserCenter/main">
-    <configuration name="go build Service/main" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.TestLikeAction in UserService/service (1)">
+    <configuration name="TestGetLikeList in UserService/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="Tiktok" />
-      <working_directory value="$PROJECT_DIR$/Service" />
+      <working_directory value="$PROJECT_DIR$/UserService/service" />
+      <root_directory value="$PROJECT_DIR$/UserService" />
       <kind value="PACKAGE" />
-      <package value="Service/main" />
+      <package value="UserService/service" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/Service/main/main.go" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestGetLikeList\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="go build UserCenter/main" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TestLikeAction in UserService/service (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="Tiktok" />
-      <working_directory value="$PROJECT_DIR$/UserCenter" />
+      <working_directory value="$PROJECT_DIR$/UserService/service" />
+      <root_directory value="$PROJECT_DIR$/UserService" />
       <kind value="PACKAGE" />
-      <package value="UserCenter/main" />
+      <package value="UserService/service" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/UserCenter/main/main.go" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestLikeAction\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="go build init_db.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TestLikeAction in UserService/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="Tiktok" />
-      <working_directory value="$PROJECT_DIR$/common" />
-      <kind value="FILE" />
+      <working_directory value="$PROJECT_DIR$/UserService/service" />
+      <root_directory value="$PROJECT_DIR$/UserService" />
+      <kind value="PACKAGE" />
+      <package value="UserService/service" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/common/mysql/init_db.go" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestLikeAction\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="go build mysql.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TestLikeListCount in UserService/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="Tiktok" />
-      <working_directory value="$PROJECT_DIR$/common" />
-      <kind value="FILE" />
+      <working_directory value="$PROJECT_DIR$/UserService/service" />
+      <root_directory value="$PROJECT_DIR$/UserService" />
+      <kind value="PACKAGE" />
+      <package value="UserService/service" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/common/mysql/mysql.go" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestLikeListCount\E$" />
       <method v="2" />
     </configuration>
+    <configuration name="TestVideoLikeCount in UserService/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="Tiktok" />
+      <working_directory value="$PROJECT_DIR$/UserService/service" />
+      <root_directory value="$PROJECT_DIR$/UserService" />
+      <kind value="PACKAGE" />
+      <package value="UserService/service" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestVideoLikeCount\E$" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go Test.TestLikeAction in UserService/service (1)" />
+      <item itemvalue="Go Test.TestGetLikeList in UserService/service" />
+      <item itemvalue="Go Test.TestLikeListCount in UserService/service" />
+      <item itemvalue="Go Test.TestVideoLikeCount in UserService/service" />
+      <item itemvalue="Go Test.TestLikeAction in UserService/service" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build UserCenter/main" />
-        <item itemvalue="Go Build.go build Service/main" />
-        <item itemvalue="Go Build.go build mysql.go" />
-        <item itemvalue="Go Build.go build init_db.go" />
+        <item itemvalue="Go Test.TestLikeAction in UserService/service (1)" />
+        <item itemvalue="Go Test.TestLikeAction in UserService/service" />
+        <item itemvalue="Go Test.TestGetLikeList in UserService/service" />
+        <item itemvalue="Go Test.TestVideoLikeCount in UserService/service" />
+        <item itemvalue="Go Test.TestLikeListCount in UserService/service" />
       </list>
     </recent_temporary>
   </component>
@@ -130,51 +144,39 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="HIGHLIGHTERS">
-                <map>
-                  <entry key="CURRENT_BRANCH" value="true" />
-                  <entry key="MERGE_COMMITS" value="true" />
-                  <entry key="MY_COMMITS" value="true" />
-                </map>
-              </option>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/main" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="User">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="*" />
-                </option>
-              </RecentGroup>
-            </list>
+            <State />
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="用户中心" />
-    <option name="LAST_COMMIT_MESSAGE" value="用户中心" />
+    <MESSAGE value="点赞" />
+    <option name="LAST_COMMIT_MESSAGE" value="点赞" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/UserService/service/likeServiceImpl.go</url>
+          <line>255</line>
+          <option name="timeStamp" value="207" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/UserService/service/likeServiceImpl.go</url>
+          <line>171</line>
+          <option name="timeStamp" value="230" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="GoTestRunConfiguration">
+        <watch expression="Host" />
+        <watch expression="err" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

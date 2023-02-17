@@ -1,10 +1,11 @@
-module Service
+module UserService
 
 go 1.18
 
 require (
 	common v0.0.0-00010101000000-00000000000
 	github.com/gin-gonic/gin v1.8.2
+	github.com/go-sql-driver/mysql v1.7.0
 	github.com/streadway/amqp v1.0.0
 	go-micro.dev/v4 v4.9.0
 )
@@ -29,7 +30,6 @@ require (
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-playground/validator/v10 v10.11.1 // indirect
-	github.com/go-sql-driver/mysql v1.7.0 // indirect
 	github.com/goccy/go-json v0.9.11 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/uuid v1.2.0 // indirect

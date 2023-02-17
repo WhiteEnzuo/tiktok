@@ -20,7 +20,7 @@ type Mysql struct {
 	Server   *gorm.DB
 }
 
-func (m *Mysql) getConnect() error {
+func (m *Mysql) GetConnect() error {
 	// MySQL 配置信息
 	dsn := m.Username + ":" + m.Password + "@tcp(" + m.Host + ":" + m.Port + ")/" + m.DBName + "?charset=utf8mb4&parseTime=True&loc=Local"
 	// Open 连接
@@ -38,7 +38,7 @@ func NewMysql(Username, Password, Host, Port, DBName string) *Mysql {
 	m.Host = Host
 	m.Port = Port
 	m.DBName = DBName
-	err := m.getConnect()
+	err := m.GetConnect()
 	if err != nil {
 		log.Error("Mysql配置有问题")
 		return nil
