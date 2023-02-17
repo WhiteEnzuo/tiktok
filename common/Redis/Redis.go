@@ -5,7 +5,9 @@ package Redis
  * @Author enzuo
  * @Date 2023/2/5
  **/
-import "github.com/garyburd/redigo/redis"
+import (
+	"github.com/garyburd/redigo/redis"
+)
 
 type Redis struct {
 	Host   string

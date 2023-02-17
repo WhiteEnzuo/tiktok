@@ -66,6 +66,7 @@ func routerInit() *gin.Engine {
 	//登录接口注册
 	router.Login(server)
 	return server
+
 }
 func init() {
 	//服务器配置
