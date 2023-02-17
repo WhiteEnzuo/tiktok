@@ -24,3 +24,10 @@ func Login(r *gin.Engine) {
 	v1Group.Handle("POST", "/user/login", controller.SHAMiddleWare(), logic.UserLoginLogic)
 
 }
+
+func UserInfo(r *gin.Engine) {
+	//用户信息接口
+	v1Group := r.Group("/douyin")
+	v1Group.Handle("POST", "/user/", controller.JWTMiddleWare(), logic.UserInfoLogic)
+
+}

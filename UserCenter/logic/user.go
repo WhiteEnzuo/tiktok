@@ -54,3 +54,17 @@ func UserLoginLogic(c *gin.Context) {
 	re.SetData(userLoginResponse)
 	c.JSON(200, re)
 }
+
+func UserInfoLogic(c *gin.Context) {
+	p := NewProxyUserInfo(c)
+	//得到上层中间件根据token解析的userId
+	rawId, ok := c.Get("user_id")
+	if !ok {
+		p.UserInfoError("解析userId出错")
+		return
+	}
+	err := p.DoQueryUserInfoByUserId(rawId)
+	if err != nil {
+		p.UserInfoError(err.Error())
+	}
+}

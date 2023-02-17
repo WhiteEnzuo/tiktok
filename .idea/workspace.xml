@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="952703bc-823c-4b8a-8f50-43b2b2b13489" name="Changes" comment="用户中心">
+      <change beforePath="$PROJECT_DIR$/UserCenter/admin/admin.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserCenter/admin/admin.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCenter/config/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/UserCenter/config/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCenter/controller/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserCenter/controller/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCenter/logic/user.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCenter/logic/user_login.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCenter/logic/user_register.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCenter/models/init_db.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCenter/models/user_info.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCenter/models/user_login.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCenter/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/UserCenter/router/router.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" url="file://$PROJECT_DIR$/../../Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="326e4e92-93c1-4f61-8cab-4c2d2e247e5d" />
+        <option name="url" value="https://github.com/Qiang-Blog/tiktok.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2LHVwf8SBoZfKjbmlqsiHFZZh08" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Go-code/Learn&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Go-code\tiktok\UserCenter\service" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Go Build.go build UserCenter/main">
+    <configuration name="go build Service/main" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Tiktok" />
+      <working_directory value="$PROJECT_DIR$/Service" />
+      <kind value="PACKAGE" />
+      <package value="Service/main" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/Service/main/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build UserCenter/main" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Tiktok" />
+      <working_directory value="$PROJECT_DIR$/UserCenter" />
+      <kind value="PACKAGE" />
+      <package value="UserCenter/main" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/UserCenter/main/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build init_db.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Tiktok" />
+      <working_directory value="$PROJECT_DIR$/common" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/common/mysql/init_db.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build mysql.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Tiktok" />
+      <working_directory value="$PROJECT_DIR$/common" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/common/mysql/mysql.go" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build UserCenter/main" />
+        <item itemvalue="Go Build.go build Service/main" />
+        <item itemvalue="Go Build.go build mysql.go" />
+        <item itemvalue="Go Build.go build init_db.go" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="HIGHLIGHTERS">
+                <map>
+                  <entry key="CURRENT_BRANCH" value="true" />
+                  <entry key="MERGE_COMMITS" value="true" />
+                  <entry key="MY_COMMITS" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="用户中心" />
+    <option name="LAST_COMMIT_MESSAGE" value="用户中心" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>
