@@ -1,6 +1,8 @@
 package model
 
-import "errors"
+import (
+	"errors"
+)
 
 /**
  * @Description
@@ -9,14 +11,15 @@ import "errors"
  **/
 
 type File struct {
-	Url      string `json:"url" gorm:"url"`
+	VideoUrl string `json:"url" gorm:"video_url"`
 	Md5      string `json:"md5" gorm:"md5"`
 	FileName string `json:"fileName" gorm:"file_name"`
+	ImageUrl string `json:"imageUrl" gorm:"image_url"`
 }
 
 // Add 增
 func (f *File) Add() error {
-	if f == nil || f.Url == "" || f.Md5 == "" || f.FileName == "" {
+	if f == nil || f.VideoUrl == "" || f.Md5 == "" || f.FileName == "" || f.ImageUrl == "" {
 		return errors.New("不能传空值")
 	}
 
@@ -28,22 +31,33 @@ func (f *File) Delete() error {
 	if f == nil {
 		return errors.New("不能传空值")
 	}
-
-	return DB.Table("file").Delete(f).Error
+	err := DB.Table("file").Delete(f).Error
+	if err != nil && err.Error() == "record not found" {
+		return nil
+	}
+	return err
 }
 
 // QueryByMd5 通过MD5查
 func (f *File) QueryByMd5() error {
-	if f.Url == "" {
+	if f.Md5 == "" {
 		return errors.New("MD5不能为空")
 	}
-	return DB.Table("file").Where("md5=?", f.Md5).First(f).Error
+	err := DB.Table("file").Where("md5=?", f.Md5).Debug().First(f).Error
+	if err != nil && err.Error() == "record not found" {
+		return nil
+	}
+	return err
 }
 
 // QueryByUrl 通过URL查
 func (f *File) QueryByUrl() error {
-	if f.Url == "" {
+	if f.VideoUrl == "" {
 		return errors.New("URL不能为空")
 	}
-	return DB.Table("file").Where("url=?", f.Url).First(f).Error
+	err := DB.Table("file").Where("video_url=?", f.VideoUrl).First(f).Error
+	if err != nil && err.Error() == "record not found" {
+		return nil
+	}
+	return err
 }

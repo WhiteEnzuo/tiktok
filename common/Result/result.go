@@ -41,7 +41,6 @@ func (r *Result) SetMessage(message string) *Result {
 	return r
 }
 func (r *Result) OK() *Result {
-
 	r.Code = 200
 	r.IsSuccess = true
 	r.Message = "Success"

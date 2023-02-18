@@ -6,17 +6,24 @@ package router
  * @Date 2023/2/5
  **/
 import (
-	"common/Result"
+	"VideoService/service"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func Register(r *gin.Engine) {
 	//注册接口
-	v1Group := r.Group("/v1")
-	v1Group.Handle("POST", "/prod", func(context *gin.Context) {
-		result := Result.NewResult()
-
-		context.JSON(200, result.OK().SetMessage("123").SetDataKey("test", "Test"))
+	video := r.Group("/tiktok")
+	video.Handle("POST", "/upload", func(c *gin.Context) {
+		service.UploadVideo(r, c)
 	})
+	video.Handle("POST", "/feed", func(c *gin.Context) {
+		service.GetContributeByUserId(c)
+	})
+	video.Handle("POST", "/publish/list/", func(c *gin.Context) {
+		service.GetContributes(c)
+	})
+	video.StaticFS("/video", http.Dir("./upload/video"))
+	video.StaticFS("/picture", http.Dir("./upload/picture"))
 
 }

@@ -146,9 +146,7 @@ func (l *LikeMQ) Consumer() {
 					if err2 != nil {
 						flag = true
 					} else {
-						if like == 0 {
-							flag = true
-						} else if like == 1 {
+						if like == 1 {
 							if err2 = dao.UpdateLike(int(uid), int(vid), 0); err2 != nil {
 								flag = true
 							}
