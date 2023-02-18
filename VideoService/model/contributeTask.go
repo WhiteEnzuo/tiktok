@@ -48,6 +48,34 @@ func (c *ContributeTask) UpData() error {
 	return err
 }
 
+//QueryByIds 通过Ids查
+func (c *ContributeTaskVo) QueryByIds(ids []int) ([]ContributeTaskVo, error) {
+	var items []ContributeTaskVo
+	for i := range ids {
+		if i <= 0 {
+			return items, errors.New("请输入正确的id号")
+		}
+		var item ContributeTaskVo
+		err := DB.Select("contribute.video_title VideoTitle,contribute.user_id UserId,contribute.id ID,"+
+			"contribute.created_at CreateAt,contribute.updated_at UpdatedAt,v.video_url video_url,v.image_url picture_url").
+			Joins("inner join  file v on v.md5=contribute.video_id").
+			Table("contribute").
+			Where("id=?", i).
+			First(&item).Error
+		if err == nil || err.Error() != "record not found" {
+			items = append(items, item)
+		} else {
+			if err != nil || err.Error() == "record not found" {
+				continue
+			}
+			return items, err
+		}
+
+	}
+
+	return items, nil
+}
+
 //QueryById 通过Id查
 func (c *ContributeTaskVo) QueryById() error {
 	if c.ID <= 0 {

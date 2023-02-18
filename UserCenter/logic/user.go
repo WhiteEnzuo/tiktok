@@ -6,9 +6,10 @@ import (
 )
 
 func UserRegisterLogic(c *gin.Context) {
-	username := c.Query("username")
+	user, _ := c.Get("username")
 	rawVal, _ := c.Get("password")
 	password, ok := rawVal.(string)
+	username, ok := user.(string)
 	if !ok {
 		re := Result.NewResult().OK()
 		re.SetMessage("密码解析出错")
@@ -28,9 +29,10 @@ func UserRegisterLogic(c *gin.Context) {
 }
 
 func UserLoginLogic(c *gin.Context) {
-	username := c.Query("username")
-	raw, _ := c.Get("password")
-	password, ok := raw.(string)
+	user, _ := c.Get("username")
+	rawVal, _ := c.Get("password")
+	password, ok := rawVal.(string)
+	username, ok := user.(string)
 	// 获取密码失败
 	if !ok {
 		re := Result.NewResult().OK()
@@ -51,8 +53,7 @@ func UserLoginLogic(c *gin.Context) {
 
 	//用户存在，返回相应的id和token
 	re := Result.NewResult().OK()
-	re.SetData(userLoginResponse)
-	c.JSON(200, re)
+	c.JSON(re.Code, re.SetData(userLoginResponse))
 }
 
 func UserInfoLogic(c *gin.Context) {
@@ -67,4 +68,7 @@ func UserInfoLogic(c *gin.Context) {
 	if err != nil {
 		p.UserInfoError(err.Error())
 	}
+	result := Result.NewResult()
+	c.JSON(result.OK().Code, result.SetDataKey("userId", rawId))
+	//p.UserInfoOk()
 }

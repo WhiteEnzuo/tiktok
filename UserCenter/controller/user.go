@@ -12,7 +12,15 @@ import (
 // SHAMiddleWare gin.Context的Set方法设置password
 func SHAMiddleWare() gin.HandlerFunc {
 	return func(context *gin.Context) {
-		password := context.Query("password")
+		request := Result.NewResult()
+		err := context.BindJSON(&request)
+		if err != nil {
+			context.JSON(500, gin.H{
+				"status_msg":  err.Error(),
+				"status_code": 500,
+			})
+		}
+		password := request.Data["password"].(string)
 		if password == "" {
 			password = context.PostForm("password")
 		}
@@ -20,7 +28,9 @@ func SHAMiddleWare() gin.HandlerFunc {
 		o := sha1.New()
 		o.Write([]byte(password))
 		str := hex.EncodeToString(o.Sum(nil))
+
 		context.Set("password", str)
+		context.Set("username", request.Data["username"].(string))
 		context.Next()
 	}
 }
@@ -28,10 +38,17 @@ func SHAMiddleWare() gin.HandlerFunc {
 // JWTMiddleWare 鉴权中间件，鉴权并设置user_id
 func JWTMiddleWare() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		tokenStr := c.Query("token")
-		if tokenStr == "" {
-			tokenStr = c.PostForm("token")
+
+		request := Result.NewResult()
+		err := c.BindJSON(&request)
+		if err != nil {
+			c.JSON(500, gin.H{
+				"status_msg":  err.Error(),
+				"status_code": 500,
+			})
 		}
+		tokenStr := request.Data["token"].(string)
+
 		//用户不存在
 		if tokenStr == "" {
 			re := Result.NewResult().Error()
@@ -57,6 +74,7 @@ func JWTMiddleWare() gin.HandlerFunc {
 			c.Abort() //阻止执行
 			return
 		}
+		//msg := Result.NewResult()
 		c.Set("user_id", tokenStruck.UserID)
 		c.Next()
 	}

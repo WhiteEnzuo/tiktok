@@ -17,12 +17,8 @@ func Register(r *gin.Engine) {
 	video.Handle("POST", "/upload", func(c *gin.Context) {
 		service.UploadVideo(r, c)
 	})
-	video.Handle("POST", "/feed", func(c *gin.Context) {
-		service.GetContributeByUserId(c)
-	})
-	video.Handle("POST", "/publish/list/", func(c *gin.Context) {
-		service.GetContributes(c)
-	})
+	video.Handle("POST", "/feed", service.GetContributeByUserId)
+	video.Handle("POST", "/publish/list/", service.GetContributes)
 	video.StaticFS("/video", http.Dir("./upload/video"))
 	video.StaticFS("/picture", http.Dir("./upload/picture"))
 
