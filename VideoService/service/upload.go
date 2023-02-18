@@ -99,6 +99,16 @@ func UploadVideo(r *gin.Engine, c *gin.Context) {
 	file = model.File{VideoUrl: "/upload/video/" + fileName + ".mp4", FileName: fileName, Md5: fileMD5, ImageUrl: snapshot}
 	err = file.Add()
 	if httpError(err, c) {
+		//文件上传mysql失败，删除本地视频文件
+		err := os.Remove(file.VideoUrl)
+		if httpError(err, c) {
+			return
+		}
+		//文件上传mysql失败，删除本地图片文件
+		err = os.Remove(file.ImageUrl)
+		if httpError(err, c) {
+			return
+		}
 		return
 	}
 	contributeTask := model.ContributeTask{
