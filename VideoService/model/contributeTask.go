@@ -32,12 +32,20 @@ func (c *ContributeTask) Add() error {
 
 //Delete 删
 func (c *ContributeTask) Delete() error {
-	return DB.Table("contribute").Delete(c).Error
+	err := DB.Table("contribute").Delete(c).Error
+	if err != nil && err.Error() == "record not found" {
+		return nil
+	}
+	return err
 }
 
 //UpData 改
 func (c *ContributeTask) UpData() error {
-	return DB.Table("contribute").Updates(c).Error
+	err := DB.Table("contribute").Updates(c).Error
+	if err != nil && err.Error() == "record not found" {
+		return nil
+	}
+	return err
 }
 
 //QueryById 通过Id查
@@ -45,12 +53,16 @@ func (c *ContributeTaskVo) QueryById() error {
 	if c.ID <= 0 {
 		return errors.New("请输入正确的id号")
 	}
-	return DB.Select("contribute.video_title VideoTitle,contribute.user_id UserId,contribute.id ID,"+
+	err := DB.Select("contribute.video_title VideoTitle,contribute.user_id UserId,contribute.id ID,"+
 		"contribute.created_at CreateAt,contribute.updated_at UpdatedAt,v.video_url video_url,v.image_url picture_url").
 		Joins("inner join  file v on v.md5=contribute.video_id").
 		Table("contribute").
 		Where("id=?", c.ID).
 		First(c).Error
+	if err != nil && err.Error() == "record not found" {
+		return nil
+	}
+	return err
 }
 
 //QueryByUserId 通过UserId查
@@ -65,6 +77,7 @@ func (c *ContributeTaskVo) QueryByUserId() ([]ContributeTaskVo, error) {
 		Table("contribute").
 		Where("user_id=?", c.UserId).
 		Find(&contributeTaskVos).Error
+
 	return contributeTaskVos, err
 }
 
@@ -92,10 +105,14 @@ func (c *ContributeTask) QueryById() error {
 	if c.ID <= 0 {
 		return errors.New("请输入正确的id号")
 	}
-	return DB.Select("*").
+	err := DB.Select("*").
 		Table("contribute").
 		Where("id=?", c.ID).
 		First(c).Error
+	if err != nil && err.Error() == "record not found" {
+		return nil
+	}
+	return err
 }
 
 //QueryByUserId 通过UserId查

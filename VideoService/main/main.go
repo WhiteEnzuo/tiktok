@@ -19,7 +19,7 @@ import (
 )
 
 func main() {
-	if true {
+	if false {
 		c := model.ContributeTask{
 			//UserId:123,
 			//VideoId: 123,
@@ -32,13 +32,13 @@ func main() {
 		if err != nil {
 			fmt.Println(err)
 		}
-		fmt.Println(a[0].PictureId)
+		fmt.Println(a[0].VideoId)
 		//fmt.Println(arr)
 
 	}
 	if false {
 		f := model.File{
-			Url: "/123",
+			VideoUrl: "/123",
 			//Md5: "456",
 		}
 		err := f.QueryByUrl()
@@ -65,7 +65,7 @@ func main() {
 		fmt.Println(result.ToJsonString())
 	}
 
-	if false {
+	if true {
 		server := admin.GetServer()
 		err := server.Run()
 		if err != nil {

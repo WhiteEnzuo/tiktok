@@ -14,13 +14,11 @@ import (
 	"fmt"
 	"github.com/disintegration/imaging"
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 	ffmpeg "github.com/u2takey/ffmpeg-go"
 	"go-micro.dev/v4/util/log"
 	"io"
 	"mime/multipart"
 	"os"
-	"path"
 	"strconv"
 )
 
@@ -61,7 +59,7 @@ func UploadVideo(r *gin.Engine, c *gin.Context) {
 	}
 	//判断是否存在相同的文件
 	file := model.File{Md5: fileMD5}
-	err = file.QueryByUrl()
+	err = file.QueryByMd5()
 	if httpError(err, c) {
 		return
 	}
@@ -87,20 +85,18 @@ func UploadVideo(r *gin.Engine, c *gin.Context) {
 		c.JSON(result.Code, result)
 		return
 	}
-	//创建uuid进行保存
-	u := uuid.New()
-	fileName := u.String()
-	dst := path.Join("./upload/video/", fileName, ".mp4")
-	err = c.SaveUploadedFile(f, dst)
+	fileName := fileMD5
+	dst := "/upload/video/" + fileName + ".mp4"
+	err = c.SaveUploadedFile(f, "."+dst)
 	if httpError(err, c) {
 		return
 	}
 	//截取第一帧为图片
-	snapshot, err := getSnapshot(dst, fileName, 0)
+	snapshot, err := getSnapshot("."+dst, fileName, 0)
 	if httpError(err, c) {
 		return
 	}
-	file = model.File{VideoUrl: "/upload/video/" + fileName + ".mp4", Md5: fileMD5, ImageUrl: snapshot}
+	file = model.File{VideoUrl: "/upload/video/" + fileName + ".mp4", FileName: fileName, Md5: fileMD5, ImageUrl: snapshot}
 	err = file.Add()
 	if httpError(err, c) {
 		return
@@ -109,6 +105,10 @@ func UploadVideo(r *gin.Engine, c *gin.Context) {
 		UserId:     atom,
 		VideoId:    fileMD5,
 		VideoTitle: title,
+	}
+	err = contributeTask.Add()
+	if httpError(err, c) {
+		return
 	}
 	result.
 		OK().
@@ -126,7 +126,7 @@ func httpError(err error, c *gin.Context) bool {
 	if err != nil {
 		log.Error(err)
 		result := Result.NewResult()
-		c.JSON(result.Error().Code, result)
+		c.JSON(result.Error().Code, result.SetMessage(err.Error()))
 		return true
 	}
 	return false
@@ -163,7 +163,7 @@ func getSnapshot(videoPath, imageName string, frameNum int) (ImagePath string, e
 		return "", err
 	}
 
-	err = imaging.Save(img, snapshotPath+".jpg")
+	err = imaging.Save(img, "."+snapshotPath+".jpg")
 	if err != nil {
 		log.Fatal("生成缩略图失败：", err)
 		return "", err

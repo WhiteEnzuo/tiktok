@@ -1,6 +1,8 @@
 package model
 
-import "errors"
+import (
+	"errors"
+)
 
 /**
  * @Description
@@ -29,8 +31,11 @@ func (f *File) Delete() error {
 	if f == nil {
 		return errors.New("不能传空值")
 	}
-
-	return DB.Table("file").Delete(f).Error
+	err := DB.Table("file").Delete(f).Error
+	if err != nil && err.Error() == "record not found" {
+		return nil
+	}
+	return err
 }
 
 // QueryByMd5 通过MD5查
@@ -38,7 +43,11 @@ func (f *File) QueryByMd5() error {
 	if f.Md5 == "" {
 		return errors.New("MD5不能为空")
 	}
-	return DB.Table("file").Where("md5=?", f.Md5).First(f).Error
+	err := DB.Table("file").Where("md5=?", f.Md5).Debug().First(f).Error
+	if err != nil && err.Error() == "record not found" {
+		return nil
+	}
+	return err
 }
 
 // QueryByUrl 通过URL查
@@ -46,5 +55,9 @@ func (f *File) QueryByUrl() error {
 	if f.VideoUrl == "" {
 		return errors.New("URL不能为空")
 	}
-	return DB.Table("file").Where("url=?", f.VideoUrl).First(f).Error
+	err := DB.Table("file").Where("video_url=?", f.VideoUrl).First(f).Error
+	if err != nil && err.Error() == "record not found" {
+		return nil
+	}
+	return err
 }

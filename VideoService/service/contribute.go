@@ -4,7 +4,6 @@ import (
 	"VideoService/model"
 	"common/Result"
 	"github.com/gin-gonic/gin"
-	"strconv"
 )
 
 /**
@@ -21,13 +20,16 @@ func GetContributeByUserId(c *gin.Context) {
 		return
 	}
 	data := request.Data
-	userId := data["userId"].(string)
-	atom, err := strconv.ParseInt(userId, 10, 64)
+	i := data["userId"].(float64)
+	userId := int64(i)
+
+	//userId := int64()
+	//atom, err := strconv.ParseInt(userId, 10, 64)
 	if httpError(err, c) {
 		return
 	}
 	vo := model.ContributeTaskVo{
-		UserId: atom,
+		UserId: userId,
 	}
 	ContributeTaskVoS, err := vo.QueryByUserId()
 	if httpError(err, c) {
