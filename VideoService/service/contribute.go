@@ -48,3 +48,19 @@ func GetContributes(c *gin.Context) {
 	c.JSON(result.OK().Code, result.SetDataKey("ContributeTaskVoS", ContributeTaskVoS))
 	return
 }
+func GetContributeByIds(c *gin.Context) {
+	request := Result.NewResult()
+	err := c.BindJSON(&request)
+	if httpError(err, c) {
+		return
+	}
+	vidList := request.Data["list"].([]int)
+	result := Result.NewResult()
+	vo := model.ContributeTaskVo{}
+	ContributeTaskVoS, err := vo.QueryByIds(vidList)
+	if httpError(err, c) {
+		return
+	}
+	c.JSON(result.OK().Code, result.SetDataKey("ContributeTaskVoS", ContributeTaskVoS))
+	return
+}

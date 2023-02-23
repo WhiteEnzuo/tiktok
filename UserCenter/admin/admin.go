@@ -67,6 +67,9 @@ func routerInit() *gin.Engine {
 	router.Login(server)
 	//用户信息接口
 	router.UserInfo(server)
+	//用户id
+	router.UserId(server)
+	router.UserInfoByUserId(server)
 	return server
 
 }

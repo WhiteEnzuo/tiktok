@@ -20,7 +20,7 @@ func Register(r *gin.Engine) {
 	// /douyin/user/login/
 	user.Handle("POST", "/login/", controller.UserLogin)
 	// /douyin/user/
-	user.Handle("GET", "/", interceptor.Interceptor(), controller.User)
+	user.Handle("GET", "/", interceptor.UserIdInterceptor(), controller.User)
 
 	feed := r.Group("/douyin/feed")
 	// /douyin/feed/
@@ -30,7 +30,7 @@ func Register(r *gin.Engine) {
 	// /douyin/publish/action/
 	publish.Handle("POST", "/action/", interceptor.Interceptor(), controller.PublishAction)
 	// /douyin/publish/list/
-	publish.Handle("GET", "/list/", interceptor.Interceptor(), controller.PublishList)
+	publish.Handle("GET", "/list/", interceptor.UserIdInterceptor(), controller.PublishList)
 
 	favorite := r.Group("/douyin/favorite")
 	favorite.Handle("POST", "/action/", interceptor.Interceptor(), controller.FavoriteAction)

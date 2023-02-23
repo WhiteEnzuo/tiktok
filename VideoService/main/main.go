@@ -13,7 +13,6 @@ import (
 	"common/Result"
 	"common/consul"
 	"common/mysql"
-	"common/token"
 	"fmt"
 	"github.com/streadway/amqp"
 )
@@ -108,9 +107,9 @@ func main() {
 			})
 	}
 	if false {
-		genToken, _ := token.GenToken(123, "456")
-		parseToken, _ := token.ParseToken(genToken)
-		fmt.Println(parseToken)
+		//genToken, _ := token.GenToken(123, "456")
+		//parseToken, _ := token.ParseToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImVuenVvIiwiZXhwIjoxNjc2ODkzMDA0LCJpc3MiOiJibHVlYmVsbCJ9.HQwV5j7zDq8lCg-2xXoKvocrkdU05mz8CPiMQnwtfp")
+		//fmt.Println(parseToken)
 	}
 
 }

@@ -66,11 +66,10 @@ func (q *QueryUserLoginFlow) prepareData() error {
 	q.userid = login.UserInfoId
 
 	//准备颁发token
-	token, err := token.GenToken(uint64(login.Id), login.Username)
+	q.token, err = token.GenToken(uint64(login.Id), login.Username)
 	if err != nil {
 		return err
 	}
-	q.token = token
 	return nil
 }
 

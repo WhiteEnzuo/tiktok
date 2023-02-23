@@ -21,9 +21,6 @@ func SHAMiddleWare() gin.HandlerFunc {
 			})
 		}
 		password := request.Data["password"].(string)
-		if password == "" {
-			password = context.PostForm("password")
-		}
 		// 将密码进行SHA加密
 		o := sha1.New()
 		o.Write([]byte(password))
@@ -61,7 +58,7 @@ func JWTMiddleWare() gin.HandlerFunc {
 		tokenStruck, err := token.ParseToken(tokenStr)
 		if err != nil {
 			re := Result.NewResult().Error()
-			re.SetMessage("token不正确")
+			re.SetMessage(err.Error())
 			c.JSON(403, re)
 			c.Abort() //阻止执行
 			return
@@ -77,5 +74,7 @@ func JWTMiddleWare() gin.HandlerFunc {
 		//msg := Result.NewResult()
 		c.Set("user_id", tokenStruck.UserID)
 		c.Next()
+
+		//log.Info("123")
 	}
 }

@@ -8,7 +8,6 @@ package token
 import (
 	"errors"
 	"github.com/dgrijalva/jwt-go"
-	"github.com/spf13/viper"
 	"time"
 )
 
@@ -30,7 +29,7 @@ func GenToken(userID uint64, username string) (string, error) {
 		username, // 自定义字段
 		jwt.StandardClaims{
 			ExpiresAt: time.Now().Add( //这里注意INT不能直接与time.hour相乘,所以用time.duration转换一下
-				time.Duration(viper.GetInt("auth.jet_expire")) * time.Hour).Unix(), // 过期时间
+				TokenExpireDuration).Unix(), // 过期时间
 			Issuer: "bluebell", // 签发人
 		},
 	}

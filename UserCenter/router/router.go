@@ -31,3 +31,15 @@ func UserInfo(r *gin.Engine) {
 	v1Group.Handle("POST", "/user/", controller.JWTMiddleWare(), logic.UserInfoLogic)
 
 }
+func UserId(r *gin.Engine) {
+	//用户信息接口
+	v1Group := r.Group("/douyin")
+	v1Group.Handle("POST", "/userId", controller.JWTMiddleWare(), logic.UserId)
+
+}
+func UserInfoByUserId(r *gin.Engine) {
+	//用户信息接口
+	v1Group := r.Group("/douyin")
+	v1Group.Handle("POST", "/userInfoByIds", logic.UserInfoByUserIds)
+
+}

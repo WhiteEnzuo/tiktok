@@ -17,7 +17,8 @@ func NewProxyUserInfo(c *gin.Context) *ProxyUserInfo {
 }
 
 func (p *ProxyUserInfo) DoQueryUserInfoByUserId(rawId interface{}) error {
-	userId, ok := rawId.(int64)
+	userId, ok := rawId.(uint64)
+
 	if !ok {
 		return errors.New("解析userId失败")
 	}
@@ -33,6 +34,22 @@ func (p *ProxyUserInfo) DoQueryUserInfoByUserId(rawId interface{}) error {
 	return nil
 }
 
+func (p *ProxyUserInfo) QueryUserInfoByUserId(rawId interface{}) (error, *models.UserInfo) {
+	userId, ok := rawId.(uint64)
+	if !ok {
+		return errors.New("解析userId失败"), nil
+	}
+	//由于得到userinfo不需要组装model层的数据，所以直接调用model层的接口
+	userinfoDAO := models.NewUserInfoDAO()
+
+	var userInfo *models.UserInfo
+	err := userinfoDAO.QueryUserInfoById(userId, userInfo)
+	if err != nil {
+		return err, nil
+	}
+	return nil, userInfo
+}
+
 func (p *ProxyUserInfo) UserInfoError(msg string) {
 	re := Result.NewResult().Error()
 	re.SetMessage(msg)
@@ -41,17 +58,11 @@ func (p *ProxyUserInfo) UserInfoError(msg string) {
 
 func (p *ProxyUserInfo) UserInfoOk(user *models.UserInfo) {
 	re := Result.NewResult().OK()
-	//m := make(map[string]interface{})
-	//m["id"] = user.Id
-	//m["name"] = user.Name
-	//m["follow_count"] = user.FollowCount
-	//m["follower_count"] = user.FollowerCount
-	//m["is_follow"] = user.IsFollow
 	re.SetMessage("Success")
 	temp := make(map[string]interface{})
 	temp["status_code"] = 0
-	temp["status_msg"] = "Success"
+	//temp.Message= "Success"
 	temp["user"] = user
-
-	p.c.JSON(http.StatusOK, re)
+	re.SetData(temp)
+	p.c.JSON(re.Code, re)
 }

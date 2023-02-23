@@ -37,7 +37,7 @@ func NewUserInfoDAO() *UserInfoDAO {
 }
 
 // 通过userid查找用户
-func (u *UserInfoDAO) QueryUserInfoById(userId int64, userinfo *UserInfo) error {
+func (u *UserInfoDAO) QueryUserInfoById(userId uint64, userinfo *UserInfo) error {
 	if userinfo == nil {
 		return ErrIvdPtr
 	}

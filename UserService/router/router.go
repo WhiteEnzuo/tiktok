@@ -12,6 +12,8 @@ import (
 
 // Like 点赞接口
 func Like(r *gin.Engine) {
-	v1Group := r.Group("/douyin")
-	v1Group.Handle("POST", "/favorite/action/", controller.LikeAction())
+	douyin := r.Group("/douyin")
+	douyin.Handle("POST", "/favorite/action/", controller.LikeAction())
+	douyin.Handle("POST", "/favorite/list/", controller.GetLikeList)
+	douyin.Handle("POST", "/favorite/IsLikes/", controller.IsLikes)
 }

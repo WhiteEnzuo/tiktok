@@ -1,6 +1,7 @@
 package logic
 
 import (
+	"UserCenter/models"
 	"common/Result"
 	"github.com/gin-gonic/gin"
 )
@@ -68,7 +69,37 @@ func UserInfoLogic(c *gin.Context) {
 	if err != nil {
 		p.UserInfoError(err.Error())
 	}
-	result := Result.NewResult()
-	c.JSON(result.OK().Code, result.SetDataKey("userId", rawId))
-	//p.UserInfoOk()
+	c = p.c
+}
+func UserId(c *gin.Context) {
+	re := Result.NewResult().OK()
+	token, _ := c.Get("token")
+	userId, _ := c.Get("user_id")
+	re.SetDataKey("token", token)
+	re.SetDataKey("userId", userId)
+	c.JSON(re.Code, re)
+}
+func UserInfoByUserIds(c *gin.Context) {
+	request := Result.NewResult()
+	err := c.BindJSON(&request)
+	if err != nil {
+		response := Result.NewResult()
+		c.JSON(response.Error().Code, response.SetMessage(err.Error()))
+		return
+	}
+	userIds := request.Data["userIds"].([]int)
+	userInfos := make([]models.UserInfo, len(userIds))
+	p := NewProxyUserInfo(c)
+	for i := range userIds {
+		err, info := p.QueryUserInfoByUserId(userIds[i])
+		if err != nil {
+			response := Result.NewResult()
+			c.JSON(response.Error().Code, response.SetMessage(err.Error()))
+			return
+		}
+		userInfos[i] = *info
+	}
+	response := Result.NewResult()
+	c.JSON(response.OK().Code, response.SetMessage("成功获取").SetDataKey("userInfos", userInfos))
+	return
 }

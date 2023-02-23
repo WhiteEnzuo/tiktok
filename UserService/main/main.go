@@ -18,7 +18,7 @@ import (
 )
 
 func main() {
-	if true {
+	if false {
 		//配置中心
 		config := consul.NewConfig("8.130.28.213", "8500")
 		var test map[string]interface{}
@@ -36,7 +36,7 @@ func main() {
 		fmt.Println(result.ToJsonString())
 	}
 
-	if false {
+	if true {
 		server := admin.GetServer()
 		err := server.Run()
 		if err != nil {
